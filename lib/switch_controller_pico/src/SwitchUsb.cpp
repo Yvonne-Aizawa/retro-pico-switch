@@ -29,6 +29,7 @@
 #include "tusb.h"
 
 static uint16_t _desc_str[32];
+static SwitchUsb *_active_switch_usb_instance = nullptr;
 
 // Invoked when received GET DEVICE DESCRIPTOR
 // Application return pointer to descriptor
@@ -84,6 +85,10 @@ void SwitchUsb::init(Controller *controller) {
                        (uint8_t)(get_rand_32() % 0xff),
                        (uint8_t)(get_rand_32() % 0xff)};
   memcpy(_addr, newAddr, 6);
+
+  // Store this instance for the TinyUSB callback
+  _active_switch_usb_instance = this;
+
   tusb_init();
   while (true) {
     tud_task();
@@ -170,4 +175,15 @@ uint16_t tud_hid_get_report_cb(uint8_t itf, uint8_t report_id,
                                hid_report_type_t report_type, uint8_t *buffer,
                                uint16_t reqlen) {
   return reqlen;
+}
+
+// TinyUSB HID set report callback - called when the host sends data to the device
+void tud_hid_set_report_cb(uint8_t itf, uint8_t report_id,
+                           hid_report_type_t report_type, uint8_t const *buffer,
+                           uint16_t bufsize) {
+  if (_active_switch_usb_instance != nullptr) {
+    // Call the hid_report_data_callback with the active instance
+    hid_report_data_callback(_active_switch_usb_instance,
+                            (uint16_t)buffer[0], (uint8_t *)buffer, bufsize);
+  }
 }

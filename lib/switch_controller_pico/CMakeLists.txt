@@ -9,6 +9,7 @@ add_library(switch_controller_pico_usb
   src/switch_controller_pico.cpp
   src/SwitchCommon.cpp
   src/SwitchUsb.cpp
+  src/Controller.cpp
 )
 
 target_include_directories(switch_controller_pico_usb PUBLIC
@@ -29,6 +30,7 @@ add_library(switch_controller_pico_bluetooth
   src/SwitchCommon.cpp
   src/SwitchBluetooth.cpp
   src/SwitchUsb.cpp
+  src/Controller.cpp
 )
 
 target_include_directories(switch_controller_pico_bluetooth PUBLIC
