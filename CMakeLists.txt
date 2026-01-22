@@ -10,4 +10,5 @@ set(PICO_BOARD pico_w)
 project(retro_pico_switch C CXX ASM)
 
 pico_sdk_init()
+add_subdirectory(lib/switch_controller_pico)
 add_subdirectory(src)
