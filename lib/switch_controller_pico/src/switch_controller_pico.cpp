@@ -6,6 +6,8 @@
 #include "SwitchBluetooth.h"
 #include "btstack.h"
 #include "BtStackUtils.h"
+#else
+#include "tusb.h"
 #endif
 
 // Dummy InitParams for SwitchInputAdapter
@@ -60,7 +62,6 @@ void SwitchControllerPico::update() {
 #ifndef SWITCH_BLUETOOTH
   // USB mode - process TinyUSB tasks
   // This should be called in the main loop
-  extern void tud_task();
   tud_task();
 #else
   // Bluetooth mode - nothing to do here, btstack_run_loop_execute() is blocking
