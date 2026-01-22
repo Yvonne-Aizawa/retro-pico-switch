@@ -13,9 +13,13 @@ retro-pico-switch/
 ├── lib/switch_controller_pico/    # NEW: Reusable library
 │   ├── include/                    # Library headers
 │   ├── src/                        # Library implementation
+│   ├── examples/                   # Example programs
+│   │   ├── CMakeLists.txt         # Build examples
+│   │   └── README.md              # Example documentation
+│   ├── auto_press_example.cpp     # Auto press A every 5 seconds
+│   ├── example.cpp                # Simple GPIO button example
 │   ├── CMakeLists.txt             # Library build configuration
-│   ├── README.md                  # Library documentation
-│   └── example.cpp                # Simple GPIO button example
+│   └── README.md                  # Library documentation
 ├── src/
 │   ├── main.cpp                   # UPDATED: Uses new library API
 │   ├── otherController/           # N64/Gamecube controller code (unchanged)
@@ -89,8 +93,11 @@ See `lib/switch_controller_pico/README.md` for:
 
 ### Example Projects
 
-- **Simple GPIO buttons**: `lib/switch_controller_pico/example.cpp`
-- **N64/Gamecube adapters**: `src/main.cpp` (this project)
+- **Auto press A button**: `lib/switch_controller_pico/auto_press_example.cpp` - Presses A every 5 seconds (great for testing!)
+- **Simple GPIO buttons**: `lib/switch_controller_pico/example.cpp` - Physical buttons on GPIO pins
+- **N64/Gamecube adapters**: `src/main.cpp` - Full retro controller adapter (this project)
+
+Build examples: `cd lib/switch_controller_pico/examples && mkdir build && cd build && cmake .. && make`
 
 ## Library Features
 

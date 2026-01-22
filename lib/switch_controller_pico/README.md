@@ -178,10 +178,33 @@ Values are packed into 3 bytes per stick:
 
 ## Example Projects
 
-See the parent project for a complete example that:
-- Reads from N64/Gamecube controllers
-- Translates to Switch format
-- Supports both USB and Bluetooth
+### Included Examples
+
+1. **Auto Press Example** (`auto_press_example.cpp`)
+   - Automatically presses A button every 5 seconds
+   - No hardware required (just USB cable)
+   - Great for testing and auto-farming
+   - See `examples/README.md` for build instructions
+
+2. **Simple Button Example** (`example.cpp`)
+   - GPIO buttons mapped to Switch controls
+   - Shows physical button integration
+   - Requires buttons on GPIO pins 2-12
+
+3. **N64/Gamecube Adapter** (parent project `src/main.cpp`)
+   - Reads from N64/Gamecube controllers
+   - Translates to Switch format
+   - Supports both USB and Bluetooth
+
+Build examples:
+```bash
+cd examples
+mkdir build && cd build
+cmake ..
+make
+```
+
+Flash the generated `.uf2` file to your Pico and connect to Switch via USB.
 
 ## API Reference
 
