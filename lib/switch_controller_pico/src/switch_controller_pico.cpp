@@ -1,9 +1,9 @@
 #include "switch_controller_pico.h"
 #include "SwitchUsb.h"
-#include "SwitchBluetooth.h"
 #include "pico/stdlib.h"
 
 #ifdef SWITCH_BLUETOOTH
+#include "SwitchBluetooth.h"
 #include "btstack.h"
 #include "BtStackUtils.h"
 #endif
