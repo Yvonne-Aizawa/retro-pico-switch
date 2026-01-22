@@ -1,5 +1,5 @@
 # Docker Image Based on https://github.com/lukstep/raspberry-pi-pico-docker-sdk
-FROM ubuntu:24.10 as build
+FROM ubuntu:25.10 as build
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
