@@ -60,3 +60,6 @@ if(DEFINED ENV{SWITCH_BLUETOOTH} OR SWITCH_BLUETOOTH)
 else()
   add_library(switch_controller_pico ALIAS switch_controller_pico_usb)
 endif()
+
+# Build examples
+add_subdirectory(examples)

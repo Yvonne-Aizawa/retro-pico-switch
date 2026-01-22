@@ -35,3 +35,5 @@ RUN make -C build/
 # Separate the Binaries for Exporting
 FROM scratch
 COPY --from=build /app/build/src/retro_pico_switch.uf2 /
+COPY --from=build /app/build/lib/switch_controller_pico/examples/auto_press_example.uf2 /
+COPY --from=build /app/build/lib/switch_controller_pico/examples/simple_button_example.uf2 /
