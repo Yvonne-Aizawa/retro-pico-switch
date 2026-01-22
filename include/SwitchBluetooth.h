@@ -3,7 +3,10 @@
 
 #include "SwitchCommon.h"
 #include "SwitchConsts.h"
+
+#ifdef SWITCH_BLUETOOTH
 #include "btstack.h"
+#endif
 
 class SwitchBluetooth : public SwitchCommon {
  public:

@@ -1,6 +1,7 @@
 #ifndef BtStackUtils_h
 #define BtStackUtils_h
 
+#ifdef SWITCH_BLUETOOTH
 #include "btstack.h"
 #include "btstack_event.h"
 #include "btstack_run_loop.h"
@@ -317,4 +318,6 @@ void create_sdp_pnp_record(uint8_t *service, uint16_t vendor_id_source,
   de_add_number(service, DE_UINT, DE_SIZE_16, vendor_id_source);
 }
 
-#endif
+#endif // SWITCH_BLUETOOTH
+
+#endif // BtStackUtils_h
