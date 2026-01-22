@@ -22,6 +22,10 @@ RUN git clone --depth 1 --branch 2.0.0 https://github.com/raspberrypi/pico-sdk $
     cd $SDK_PATH && \
     git submodule update --init
 
+# Fix pioasm compilation errors with GCC 15.2.0 - add missing cstdint includes
+RUN sed -i '/#include "pio_enums.h"/a #include <cstdint>' $SDK_PATH/tools/pioasm/pio_types.h && \
+    sed -i '1a #include <cstdint>' $SDK_PATH/tools/pioasm/output_format.h
+
 ENV PICO_SDK_PATH=$SDK_PATH
 
 # Build the Project
